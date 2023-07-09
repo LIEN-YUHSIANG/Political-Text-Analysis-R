@@ -16,9 +16,19 @@ if __name__ == "__main__":
 
         url = f"https://www.president.gov.ua/en/news/speeches?date-from=17-06-2022&date-to=17-06-2023&page={i}"
 
-        req = requests.Request(url, headers={'User-Agent': 'XYZ/3.0'})
+        # url = f"https://www.president.gov.ua/en/news/speeches?date-from=06-07-2022&date-to=06-07-2023&page={i}"
 
-        resp = requests.urlopen(req, timeout=20).read()
+        req = requests.Request(url, headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36',
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+  'Accept-Encoding': 'none',
+  'Accept-Language': 'en-US,en;q=0.8',
+  'Connection': 'keep-alive',
+  'refere': 'https://example.com',
+  'cookie': """your cookie value ( you can get that from your web page) """
+})
+
+        resp = requests.urlopen(req, timeout=22).read()
 
         fin_content = html.fromstring(resp).xpath("//a[starts-with(@href, 'https://www.president.gov.ua/en/news/')]/@href")
 
@@ -31,7 +41,7 @@ if __name__ == "__main__":
     print()
     linkofu = set(linkofu)
     for line in linkofu:
-        with open(f'links.txt', 'a') as file:
+        with open(f'links2.txt', 'a') as file:
             file.write(line)
             file.write('\n')
         print(line)
