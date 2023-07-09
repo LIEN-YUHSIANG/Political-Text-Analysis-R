@@ -10,7 +10,7 @@ library(wordcloud)
 speech <- readtext("./SF/*.txt",
                  docvarsfrom = "filenames",
                  dvsep = "_",
-                 docvarnames = c("Date", "President", "Party", "Num"))
+                 docvarnames = c("Date", "Value", "Type", "Num"))
 
 speech$Month <- month(speech$Date)
 speech$Day <- day(speech$Date)
